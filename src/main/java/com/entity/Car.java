@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "car")
 @Getter
 @Setter
 public class Car {
