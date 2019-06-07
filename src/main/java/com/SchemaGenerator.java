@@ -4,6 +4,7 @@ import com.entity.CondenserMicrophone;
 import com.entity.DynamicMicrophone;
 import com.entity.Microphone;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -43,27 +44,28 @@ public class SchemaGenerator {
     }
 
     private static void generateDataValue() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        for (int i = 0; i < 50; i++) {
-            if (i % 2 == 0) {
-                DynamicMicrophone microphone = new DynamicMicrophone();
-                microphone.setName("Child dynamic " + i);
-                microphone.setWeight(String.valueOf(i * 10));
-                session.save(microphone);
-            }
-            if (i % 3 == 0) {
-                Microphone microphone = new Microphone();
-                microphone.setName("Parent mic " + i);
-                session.save(microphone);
-            }
-            if (i % 4 == 0) {
-                CondenserMicrophone microphone = new CondenserMicrophone();
-                microphone.setName("Child condenser " + i);
-                microphone.setColor("Color #" + i);
-                session.save(microphone);
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
+            for (int i = 0; i < 50; i++) {
+                if (i % 2 == 0) {
+                    DynamicMicrophone microphone = new DynamicMicrophone();
+                    microphone.setName("Child dynamic " + i);
+                    microphone.setWeight(String.valueOf(i * 10));
+                    session.save(microphone);
+                }
+                if (i % 3 == 0) {
+                    Microphone microphone = new Microphone();
+                    microphone.setName("Parent mic " + i);
+                    session.save(microphone);
+                }
+                if (i % 4 == 0) {
+                    CondenserMicrophone microphone = new CondenserMicrophone();
+                    microphone.setName("Child condenser " + i);
+                    microphone.setColor("Color #" + i);
+                    session.save(microphone);
+                }
             }
         }
-        session.close();
     }
 
     public static void main(String[] args) {

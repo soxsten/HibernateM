@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MicrophoneDto {
+class MicrophoneDto {
     private long id;
     private String name;
 }
