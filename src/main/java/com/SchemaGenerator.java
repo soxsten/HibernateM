@@ -13,9 +13,10 @@ import org.hibernate.tool.schema.TargetType;
 import java.io.File;
 import java.util.EnumSet;
 
+import static com.Constants.HIBERNATE_CONFIG_XML;
+
 public class SchemaGenerator {
     private static final String SCRIPT_FILE = "exportScript.sql";
-    private static final String HIBERNATE_CFG_XML = "hibernate.cfg.xml";
 
     private static SchemaExport getSchemaExport() {
         SchemaExport export = new SchemaExport();
@@ -88,7 +89,7 @@ public class SchemaGenerator {
 
     public static void main(String[] args) {
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .configure(HIBERNATE_CFG_XML)
+                .configure(args[0].isEmpty() ? HIBERNATE_CONFIG_XML : args[0])
                 .build();
         Metadata metadata = new MetadataSources(serviceRegistry)
                 .getMetadataBuilder()
