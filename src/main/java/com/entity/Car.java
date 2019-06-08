@@ -1,6 +1,8 @@
 package com.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -8,14 +10,14 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "car")
+@MappedSuperclass
 @DynamicInsert
 @DynamicUpdate
 @Getter
 @Setter
-public class Car {
+@AllArgsConstructor
+@NoArgsConstructor
+public abstract class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

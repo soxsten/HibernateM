@@ -1,8 +1,6 @@
 package com;
 
-import com.entity.CondenserMicrophone;
-import com.entity.DynamicMicrophone;
-import com.entity.Microphone;
+import com.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -43,7 +41,7 @@ public class SchemaGenerator {
         System.out.println("Export OK");
     }
 
-    private static void generateDataValue() {
+    private static void generateMicrophoneData() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             for (int i = 0; i < 50; i++) {
@@ -68,6 +66,26 @@ public class SchemaGenerator {
         }
     }
 
+    private static void generateCarData() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
+            for (int i = 0; i < 30; i++) {
+                if (i % 3 == 0) {
+                    HeavyCar car = new HeavyCar();
+                    car.setName("Heavy car " + i * 10);
+                    car.setColor(String.valueOf(i * 3));
+                    session.save(car);
+                }
+                if (i % 4 == 0) {
+                    EasyCar car = new EasyCar();
+                    car.setName("Easy car " + i);
+                    car.setDescription("Description #" + i * 4);
+                    session.save(car);
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .configure(HIBERNATE_CFG_XML)
@@ -80,6 +98,7 @@ public class SchemaGenerator {
         dropDataBase(export, metadata);
         System.out.println("Create Database...");
         createDataBase(export, metadata);
-        generateDataValue();
+        generateMicrophoneData();
+        generateCarData();
     }
 }
