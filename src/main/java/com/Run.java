@@ -23,7 +23,7 @@ public class Run {
 
     public static void main(String[] args) {
         task21();
-        task22();
+        task2223();
         task24();
     }
 
@@ -39,7 +39,7 @@ public class Run {
                 });
     }
 
-    static List<DynamicMicrophoneDto> task22() {
+    static List<DynamicMicrophoneDto> task2223() {
         List<Microphone> microphones = getListOf(Microphone.class);
         List<Microphone> list = microphones.stream()
                 .filter(microphone -> microphone instanceof DynamicMicrophone)

@@ -45,12 +45,12 @@ class RunTest {
     void should_return_expected_dynamicMicrophones() throws IOException {
         //given
         ObjectMapper mapper = new ObjectMapper();
-        File resourcePath = new File("src/test/resources/run-test/task22-DynamicMicrophoneDto-list.json");
+        File resourcePath = new File("src/test/resources/run-test/task22-dynamicMicrophoneDto-list.json");
         List<DynamicMicrophoneDto> expected = mapper.readValue(resourcePath, new TypeReference<List<DynamicMicrophoneDto>>() {
         });
 
         //when
-        List<DynamicMicrophoneDto> actual = Run.task22();
+        List<DynamicMicrophoneDto> actual = Run.task2223();
 
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
