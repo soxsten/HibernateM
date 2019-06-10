@@ -1,4 +1,4 @@
-package com;
+package com.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-class HibernateUtil {
+public class HibernateUtil {
     private static SessionFactory sessionFactory;
 
     static {
@@ -28,7 +28,7 @@ class HibernateUtil {
         return sessionFactory;
     }
 
-    static void setupConfig(String config) {
+    public static void setupConfig(String config) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure(config)
                 .build();

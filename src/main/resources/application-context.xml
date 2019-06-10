@@ -6,11 +6,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean name="myLogger" class="com.Logger"/>
-    <bean name="dataUtil" class="com.DataUtil"/>
+    <bean name="myLogger" class="com.util.Logger"/>
+    <bean name="dataUtil" class="com.util.DataUtil"/>
     <aop:config>
         <aop:aspect id="log" ref="myLogger">
-            <aop:pointcut id="getValue" expression="execution(* com.DataUtil.*(..))"/>
+            <aop:pointcut id="getValue" expression="execution(* com.util.DataUtil.*(..))"/>
             <aop:around pointcut-ref="getValue" method="logAroundAllMethods"/>
         </aop:aspect>
     </aop:config>

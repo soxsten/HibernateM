@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class HeavyCarDto extends CarDto {
+class HeavyCarDto extends CarDto {
     private String color;
 }

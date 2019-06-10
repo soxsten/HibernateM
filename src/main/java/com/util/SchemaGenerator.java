@@ -1,4 +1,4 @@
-package com;
+package com.util;
 
 import com.entity.*;
 import org.hibernate.Session;
@@ -13,7 +13,7 @@ import org.hibernate.tool.schema.TargetType;
 import java.io.File;
 import java.util.EnumSet;
 
-import static com.Constants.HIBERNATE_CONFIG_XML;
+import static com.util.Constants.HIBERNATE_CONFIG_XML;
 
 public class SchemaGenerator {
     private static final String SCRIPT_FILE = "exportScript.sql";

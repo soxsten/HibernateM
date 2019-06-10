@@ -5,6 +5,9 @@ import com.dto.DynamicMicrophoneDto;
 import com.dto.EasyCarDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.util.DataUtil;
+import com.util.HibernateUtil;
+import com.util.SchemaGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,7 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.Constants.HIBERNATE_TEST_CONFIG_XML;
+import static com.util.Constants.HIBERNATE_TEST_CONFIG_XML;
 import static org.junit.jupiter.api.TestInstance.Lifecycle;
 
 @TestInstance(Lifecycle.PER_CLASS)

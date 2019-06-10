@@ -1,4 +1,4 @@
-package com;
+package com.util;
 
 import com.dto.CarDto;
 import com.dto.DynamicMicrophoneDto;
@@ -21,14 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.Constants.Credentials.*;
+import static com.util.Constants.Credentials.*;
 
 @SuppressWarnings("unchecked")
 @Component
-class DataUtil {
-    private ObjectMapper mapper = new ObjectMapper();
+public class DataUtil {
+    private final ObjectMapper mapper = new ObjectMapper();
 
-    <T> List<T> getListOf(Class<T> clazz) {
+    private <T> List<T> getListOf(Class<T> clazz) {
         List<T> authorList;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
@@ -41,7 +41,7 @@ class DataUtil {
         return authorList;
     }
 
-    List<CarDto> task21() {
+    public List<CarDto> task21() {
         List<EasyCar> list;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             list = session
@@ -53,7 +53,7 @@ class DataUtil {
                 });
     }
 
-    List<DynamicMicrophoneDto> task2223() {
+    public List<DynamicMicrophoneDto> task2223() {
         List<Microphone> microphones = getListOf(Microphone.class);
         List<Microphone> list = microphones.stream()
                 .filter(microphone -> microphone instanceof DynamicMicrophone)
@@ -63,7 +63,7 @@ class DataUtil {
                 });
     }
 
-    List<EasyCarDto> task24() {
+    public List<EasyCarDto> task24() {
         List<EasyCar> cars = new ArrayList<>();
         String query = "select id, created, updated, name, description from easycar";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

@@ -1,4 +1,4 @@
-package com;
+package com.util;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
