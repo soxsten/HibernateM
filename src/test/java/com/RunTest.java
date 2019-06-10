@@ -2,6 +2,7 @@ package com;
 
 import com.dto.CarDto;
 import com.dto.DynamicMicrophoneDto;
+import com.dto.EasyCarDto;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.assertj.core.api.Assertions;
@@ -14,8 +15,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.Constants.HIBERNATE_TEST_CONFIG_XML;
+import static org.junit.jupiter.api.TestInstance.Lifecycle;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(Lifecycle.PER_CLASS)
 class RunTest {
 
     @BeforeAll
@@ -31,8 +33,10 @@ class RunTest {
         File resourcePath = new File("src/test/resources/run-test/task21-cardto-list.json");
         List<CarDto> expected = mapper.readValue(resourcePath, new TypeReference<List<CarDto>>() {
         });
+
         //when
         List<CarDto> actual = Run.task21();
+
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
     }
@@ -47,6 +51,21 @@ class RunTest {
 
         //when
         List<DynamicMicrophoneDto> actual = Run.task22();
+
+        //then
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    void should_return_expected_easycar_list() throws IOException {
+        //given
+        ObjectMapper mapper = new ObjectMapper();
+        File resourcePath = new File("src/test/resources/run-test/task24-easycar-list.json");
+        List<EasyCarDto> expected = mapper.readValue(resourcePath, new TypeReference<List<EasyCarDto>>() {
+        });
+
+        //when
+        List<EasyCarDto> actual = Run.task24();
 
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
