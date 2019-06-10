@@ -1,7 +1,11 @@
 package com;
 
+import com.dto.CarDto;
+import com.dto.DynamicMicrophoneDto;
 import com.dto.EasyCarDto;
+import com.entity.DynamicMicrophone;
 import com.entity.EasyCar;
+import com.entity.Microphone;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hibernate.Session;
@@ -15,13 +19,16 @@ import javax.persistence.criteria.Root;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.Constants.Credentials.*;
 
 @SuppressWarnings("unchecked")
 @Component
 class DataUtil {
-    static <T> List<T> getListOf(Class<T> clazz) {
+    private ObjectMapper mapper = new ObjectMapper();
+
+    <T> List<T> getListOf(Class<T> clazz) {
         List<T> authorList;
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
@@ -34,8 +41,29 @@ class DataUtil {
         return authorList;
     }
 
+    List<CarDto> task21() {
+        List<EasyCar> list;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            list = session
+                    .createQuery("from EasyCar", EasyCar.class)
+                    .getResultList();
+        }
+        return mapper.convertValue(list,
+                new TypeReference<List<CarDto>>() {
+                });
+    }
+
+    List<DynamicMicrophoneDto> task2223() {
+        List<Microphone> microphones = getListOf(Microphone.class);
+        List<Microphone> list = microphones.stream()
+                .filter(microphone -> microphone instanceof DynamicMicrophone)
+                .collect(Collectors.toList());
+        return mapper.convertValue(list,
+                new TypeReference<List<DynamicMicrophoneDto>>() {
+                });
+    }
+
     List<EasyCarDto> task24() {
-        ObjectMapper mapper = new ObjectMapper();
         List<EasyCar> cars = new ArrayList<>();
         String query = "select id, created, updated, name, description from easycar";
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

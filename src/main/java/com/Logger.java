@@ -11,6 +11,7 @@ public class Logger {
         timer.start();
         pjp.proceed();
         timer.stop();
-        System.out.println(timer.getTotalTimeSeconds());
+        String methodName = pjp.getSignature().getName();
+        System.out.println("Total time is: " + timer.getTotalTimeSeconds() + " for method: " + methodName);
     }
 }

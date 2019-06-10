@@ -35,7 +35,7 @@ class RunTest {
         });
 
         //when
-        List<CarDto> actual = Run.task21();
+        List<CarDto> actual = new DataUtil().task21();
 
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -50,7 +50,7 @@ class RunTest {
         });
 
         //when
-        List<DynamicMicrophoneDto> actual = Run.task2223();
+        List<DynamicMicrophoneDto> actual = new DataUtil().task2223();
 
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
@@ -65,7 +65,7 @@ class RunTest {
         });
 
         //when
-        List<EasyCarDto> actual = Run.task24();
+        List<EasyCarDto> actual = new DataUtil().task24();
 
         //then
         Assertions.assertThat(actual).isEqualTo(expected);
