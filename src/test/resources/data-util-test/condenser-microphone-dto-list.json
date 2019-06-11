@@ -1,0 +1,67 @@
+[
+  {
+    "id": 3,
+    "name": "Child condenser 0",
+    "color": "Color #0"
+  },
+  {
+    "id": 7,
+    "name": "Child condenser 4",
+    "color": "Color #4"
+  },
+  {
+    "id": 11,
+    "name": "Child condenser 8",
+    "color": "Color #8"
+  },
+  {
+    "id": 16,
+    "name": "Child condenser 12",
+    "color": "Color #12"
+  },
+  {
+    "id": 20,
+    "name": "Child condenser 16",
+    "color": "Color #16"
+  },
+  {
+    "id": 24,
+    "name": "Child condenser 20",
+    "color": "Color #20"
+  },
+  {
+    "id": 29,
+    "name": "Child condenser 24",
+    "color": "Color #24"
+  },
+  {
+    "id": 33,
+    "name": "Child condenser 28",
+    "color": "Color #28"
+  },
+  {
+    "id": 37,
+    "name": "Child condenser 32",
+    "color": "Color #32"
+  },
+  {
+    "id": 42,
+    "name": "Child condenser 36",
+    "color": "Color #36"
+  },
+  {
+    "id": 46,
+    "name": "Child condenser 40",
+    "color": "Color #40"
+  },
+  {
+    "id": 50,
+    "name": "Child condenser 44",
+    "color": "Color #44"
+  },
+  {
+    "id": 55,
+    "name": "Child condenser 48",
+    "color": "Color #48"
+  }
+]

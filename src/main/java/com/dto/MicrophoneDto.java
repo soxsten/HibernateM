@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
-class MicrophoneDto {
+public class MicrophoneDto {
     private long id;
     private String name;
 }

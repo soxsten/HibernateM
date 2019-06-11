@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-class CondenserMicrophoneDto extends MicrophoneDto {
+public class CondenserMicrophoneDto extends MicrophoneDto {
     private String color;
 }
