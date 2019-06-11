@@ -92,4 +92,21 @@ public class DataUtil {
                 new TypeReference<List<EasyCarDto>>() {
                 });
     }
+
+    <E, F extends E> List<E> filterFor(Class<E> entityType, Class<F> filter) {
+        List<E> microphones = this.getListOf(entityType);
+        int middle = microphones.size() / 2;
+        FilterTask<F, E> firstTask = new FilterTask<>(
+                microphones.subList(0, middle), filter);
+        firstTask.fork();
+
+        FilterTask<F, E> secondTask = new FilterTask<>(
+                microphones.subList(middle + 1, microphones.size() - 1), filter);
+        List<E> secondTaskResult = secondTask.compute();
+        List<E> firstTaskResult = firstTask.join();
+
+        List<E> result = new ArrayList<>(firstTaskResult);
+        result.addAll(secondTaskResult);
+        return result;
+    }
 }

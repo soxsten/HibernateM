@@ -6,8 +6,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public
 class Constants {
-    static final String HIBERNATE_CONFIG_XML = "hibernate.cfg.xml";
     public static final String HIBERNATE_TEST_CONFIG_XML = "hibernate-test.cfg.xml";
+    static final String HIBERNATE_CONFIG_XML = "hibernate.cfg.xml";
 
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     class Credentials {
