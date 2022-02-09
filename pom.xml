@@ -13,7 +13,7 @@
         <dependency>
             <artifactId>hibernate-core</artifactId>
             <groupId>org.hibernate</groupId>
-            <version>5.4.2.Final</version>
+            <version>5.4.24.Final</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
